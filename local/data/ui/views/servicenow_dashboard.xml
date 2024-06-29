@@ -1,0 +1,75 @@
+<dashboard version="1.1" theme="dark">
+  <label>Servicenow Dashboard</label>
+  <row>
+    <panel>
+      <title>Incident count by team</title>
+      <table>
+        <search>
+          <query>index=servicenow sourcetype="snow:incident" | stats count by assignment_group_name | rename assignment_group_name as team |fillnull value="others"</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Incident count by category</title>
+      <table>
+        <search>
+          <query>index=servicenow sourcetype="snow:incident"  | stats count by dv_subcategory | rename dv_subcategory as category</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Change Request count by team</title>
+      <table>
+        <search>
+          <query>index=servicenow sourcetype="snow:change_request" | stats count by assignment_group_name | rename assignment_group_name as team</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Change request Count by category</title>
+      <table>
+        <search>
+          <query>index=servicenow sourcetype="snow:change_request" | stats count by dv_type | rename dv_type as category</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">50</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
